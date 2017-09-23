@@ -1,0 +1,49 @@
+Old Faithful Geyser Eruption Period
+========================================================
+author: Chris Kim  
+date: September 23, 2017
+autosize: true
+
+Both ui.R and server.R are in  <https://github.com/yjkim09/yjkim09.github.io/tree/master>.
+
+Documentation
+========================================================
+
+- faithful: Waiting time between eruptions and the duration of the eruption for the Old Faithful geyser in Yellowstone National Park, Wyoming, USA.
+- This app is the demonstration of Shiny functionality
+                 using the faithful data (Old Faithful).
+- First it draws the histogram of waiting time based on the number of bins. Bin size is the  user input. 
+- Second graph gives the prediction of eruption period based on the user input for the waiting time. 
+- Model is calculated reactively, in other words, only when the user input for the waiting time is updated. 
+- Predicted eruption time will be the output. 
+- Model fit can be turned on or off based on the user input. 
+
+faithful dataset
+=======================================================
+```{r}
+head(faithful,n=3)
+summary(faithful)
+```
+
+ui.R
+========================================================
+
+ui.R includes 
+- documentation
+- two sliderInputs for bin size and waiting_time.
+- one checkbox for turning on or off the model fit.
+- waitin_time historgram
+- eruption vs. waiting graph with linear fit
+
+
+
+server.R
+========================================================
+- It takes the input for the bin size from the ui.R and plot the historgram of waiting time. 
+- The historgram is pushed back to ui.R
+- It performs the linear regression for the eruption period using waiting time as the predictor.
+- Model is calculated reactively, in other words, it's recalculated only if the input is updated. 
+- Using the waiting time input from ui.R it returns the predicted eruption period.
+- regression line fit can be turned on or off.
+
+
